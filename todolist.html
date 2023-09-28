@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TO-DO list</title>
+    <style>
+      body {
+        background-color: rgb(3, 47, 83);
+        /* background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2S6o5_gEDE29JGuaeEBawmrAlLW7wfCgt7w&usqp=CAU); */
+        background-repeat: no-repeat;
+        background-size: 390px 600px;
+     
+      }
+      .body {
+        background-color: white;
+        margin-left: 30%;
+        margin-right: 30%;
+      }
+      .container {
+        color: rgb(3, 47, 83);
+
+        text-align: center;
+        margin-left: 30%;
+        margin-right: 30%;
+      }
+      #btn {
+        font-size: 1rem;
+        padding: 0.8em 2em;
+        background-color: rgb(3, 47, 83);
+        border: 3px solid #000;
+        border-radius: 1em;
+        color: #fff;
+        font-weight: bolder;
+      }
+
+      #btn:active {
+        background-color: blue;
+      }
+
+      #input-box {
+        margin-left: 30%;
+        height: 30px;
+        border-color: rgb(3, 47, 83);
+        border-width: 5px;
+      }
+      ul li {
+        list-style: none;
+        font-size: 17px;
+        padding: 12px 8px 12px 50px;
+        user-select: none;
+        cursor: pointer;
+        position: relative;
+      }
+      ul li::before {
+        content: "";
+        position: absolute;
+        height: 28px;
+        width: 28px;
+        border-radius: 50%;
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAXVBMVEX///8AAAC7u7vh4eFqamr8/PyysrLV1dXLy8s5OTnU1NSbm5tPT089PT0qKioXFxdzc3OAgIDr6+vz8/Nubm6mpqYJCQlgYGAjIyNYWFhDQ0OKiorAwMCzs7OsrKwSEc7KAAAEe0lEQVR4nO2da3OqQAyGsYAIKMjFS7Xl///MU6pWrZDESyfZPe/z1e1MnuIm2awzBIGMuMmmeTRfFOV6osm6LBbzKJ9mTSyMXGQXdsutqtcQ22UXvsYyq1JtmVHSKntWr84LbQuGIq+f8Atb7fhFtOGDfkmkHbqYKHnAr3Hj+Z1om3sFV9oh383qLr/EbvocJ73jq9ppB/sgnVTQnQzzm0jkV5facT5BKSiOiW7f+SxrdjPOtEN8mhkt+KEd3wv48PsJ9hBPMdGO7UWM7sXa7SRzZj2WUV0uE9eUw4LuFvpbBku/q63aMAMNnC9Z5sRttnHxNEGR/hZ07zzI8eu82GjH8wdcn/rdGlnIaH1OMwcuk41PpfDMRVEMtWP5I85zVPEuTDfV6k2XVbURF7afnVjL1r93j86WX03YvctCPnXguWRxZEXvQChKHflxteDyZffI2PxvSXZ82MVhacav3OvKjLDnAz9cvlXsuqmyyhhTNvKqXxazqYmZXinCzpXS/paYLYZWn2AP+xT7/MidfG3uwRPcXuxPwkt6yU7bgYHJqMuvbcj8ysJembiGOTRsY+5kKLvN0YQp/Q1XDW11MkMwmTJjstG7dvwC6B51yjSl912O60CPmHLma2z/S8p9TaNgTn18M5IzCdmUzYMF9fFGO3gRG0phQR+dKu3gRZBHh4K+cHIh0TCppgzIO8M37eBFvFEK64D61AfDCQxdAIYwtA8MYWgfGMLQPjCEoX1gCEP7wBCG9oEhDO0DQxjaB4YwtA8MYWgfGMLQPjCEoX1gCEP7wBCG9oEhDO0DQxjaB4YwtA8MYWgfGMLQPjCEoX1gCEP7wBCG9oEhDO0DQxjaB4YwtA8MYWgfGMLQPjCEoX1gCEP7wBCG9oEhDO0DQxjaB4YwtA8MYWgfGMLQPjCEoX1gCEP7wBCG9oEhDO0DQxjaB4beG/r/7jz/33/o/zss/X8Pqf/vkvX/fcD0O5077fAFdKRB/h+8l9v/d6s39IJIW4CFTiSTJoi39IpE24AhocPfxkGwpJfstBUYdnT4y4BLRZPJXtuBZM9E3xcDZqf22cgun1zwfaaMyZagZ6btMcqMCz2N+2Vk4/rNp7bJCOwTPB4dmIrYY3Mvcntw0lfDb8gD1IGdvaKRMFm0pziupVvTI62t7iZsJUHnx9W1ZPFXj9pZkQw7uhf9oT79hej/0ZNuqtWbLqtqwyb/E+35fyL9E8e4+M4x3aujXJ4amPbVUa7yv3gnOkR7KcidEp2kuU7A5FTVSW6m2eIU7Ai3g1Dfks1Am8mdhN1icAzqU1EcGaCR11BOUQ4LBjV5l+gQ63rE0JtsQxxm2bmHE5BzpQ/t6F7AByXow1NkJ4OJ2+lmLRgo1S4XjXI0i17hbukX35S52sDdcWOduHjSSO+b6bp3Xrz7102NW4ONtuGVbkjcyTjRo5cOstG5Ok9dONS54NpGlSKXlUCCrLKbWNMqe1bvmzjslswvNhTYLrswfonf0bLJpnk0XxSlbt+6LovFPMqnWSO1+wfGhmwglVc67wAAAABJRU5ErkJggg==);
+        background-size: cover;
+        background-position: center;
+        top: 12px;
+        left: 8px;
+      }
+      .check {
+        color: rgb(3, 47, 83);
+        text-decoration: line-through;
+      }
+      .check::before {
+        background-image: url(data:image/png;base64,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);
+      }
+
+      span {
+        position: absolute;
+        right: 0;
+
+        margin-right: 5%;
+      }
+      span:hover {
+        background-color: rgb(9, 75, 83);
+      }
+       .h1{
+        background-color: #fff;
+     
+       }
+
+    </style>
+  </head>
+  <body>
+    <div class="h1">
+        <h1>Daily Routine</h1>
+  </div>
+    
+    <div class="body">
+      <div class="container">
+        <h1>To-Do list</h1>
+        For My Lifestyle
+        <hr color="rgb(5, 61, 87)" width="70%" size="5px" hr />
+      </div>
+      <input type="text" id="input-box" placeholder="Target" />
+      <button type="button" onclick="addTask()" id="btn">Add</button>
+      <ul id="list"></ul>
+    </div>
+  </body>
+  <script src="/javascript/todolist.js"></script>
+</html>
